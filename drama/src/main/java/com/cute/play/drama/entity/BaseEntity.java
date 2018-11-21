@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 2018/11/21
  */
 @Data
-public class BaseEntity {
+class BaseEntity {
     private Long id;
     private String creator;
     private Date created;

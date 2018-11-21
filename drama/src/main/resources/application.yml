@@ -1,0 +1,20 @@
+server:
+  port: 8088
+mybatis-plus:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.cute.play.drama.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/drama?useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifetime: 1765000
+      maximumPoolSize: 15

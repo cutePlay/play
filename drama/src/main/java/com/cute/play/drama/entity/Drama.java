@@ -11,5 +11,6 @@ import lombok.Data;
 public class Drama extends BaseEntity {
     private String title;
     private String synopsis;
+    private String truth;
     private DramaTypeEnum type;
 }

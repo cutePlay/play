@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>瑾园孤花-人物剧本</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--/*@thymesVar id="role" type="com.cute.play.drama.entity.DramaRole"*/-->
+<img th:src="${role.portrait}" width="100%">
+<img th:src="'/'+${role.dramaId}+${role.book}+'/03.jpg'" width="100%">
+<img th:src="'/'+${role.dramaId}+${role.book}+'/04.jpg'" width="100%">
+<img th:src="'/'+${role.dramaId}+${role.book}+'/05.jpg'" width="100%">
+</body>
+</html>

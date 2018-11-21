@@ -1,8 +1,8 @@
 package com.cute.play.drama.repository;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cute.play.drama.entity.Drama;
+import com.cute.play.drama.mapper.DramaMapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @since 2018/11/21
  */
 @Repository
-public class DramaRepository extends ServiceImpl<BaseMapper<Drama>, Drama> {
+public class DramaRepository extends ServiceImpl<DramaMapper, Drama> {
 
 }

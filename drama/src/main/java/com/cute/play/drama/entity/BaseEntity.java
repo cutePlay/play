@@ -18,5 +18,5 @@ class BaseEntity {
     private String modifier;
     private Date modified;
     @TableLogic
-    private Integer flag;
+    private Integer deleted;
 }

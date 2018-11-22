@@ -19,3 +19,6 @@ spring:
     hikari:
       maxLifetime: 1765000
       maximumPoolSize: 15
+  cors:
+    allowed:
+     - \\*

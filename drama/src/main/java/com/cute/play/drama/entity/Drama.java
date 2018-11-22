@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 public class Drama extends BaseEntity {
     private String title;
+    private String cover;
     private String synopsis;
     private String truth;
     private DramaTypeEnum type;

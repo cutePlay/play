@@ -1,13 +1,15 @@
 package com.cute.play.drama.entity;
 
 import com.cute.play.drama.entity.enums.DramaTypeEnum;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author hanyuting
  * @since 2018/11/21
  */
-@Data
+@Getter
+@Setter
 public class Drama extends BaseEntity {
     private String title;
     private String synopsis;

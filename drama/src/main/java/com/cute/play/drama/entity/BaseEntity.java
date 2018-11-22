@@ -2,13 +2,15 @@ package com.cute.play.drama.entity;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import java.util.Date;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author hanyuting
  * @since 2018/11/21
  */
-@Data
+@Getter
+@Setter
 class BaseEntity {
     private Long id;
     private String creator;

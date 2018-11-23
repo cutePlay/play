@@ -1,5 +1,6 @@
 package com.cute.play.drama.config;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,10 +18,11 @@ import org.springframework.web.filter.CorsFilter;
 @Getter
 @Setter
 @Configuration
-@ConditionalOnProperty("spring.cors.allowed")
+@ConditionalOnProperty("spring.cors.enable")
 @ConfigurationProperties("spring.cors")
 public class CorsConfig {
-    private String[] allowed;
+    private Boolean enable;
+    private List<String> origin;
     @Bean
     public CorsFilter corsFilter(){
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -30,7 +32,7 @@ public class CorsConfig {
 
     private CorsConfiguration buildConfig() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("*");
+        config.setAllowedOrigins(this.getOrigin());
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         return config;

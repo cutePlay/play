@@ -20,5 +20,6 @@ spring:
       maxLifetime: 1765000
       maximumPoolSize: 15
   cors:
-    allowed:
-     - \\*
+    enable: true
+    origin:
+      - http://localhost(:\d+)?

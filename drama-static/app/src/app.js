@@ -5,7 +5,7 @@ var dramaStaticApp = angular.module('dramaStaticApp', [
   'ngRoute',
   'ngResource'
 ])
-    .value("baseUrl",{
+    .constant("baseUrl",{
       "api":"http://localhost:8088/"
     })
 ;

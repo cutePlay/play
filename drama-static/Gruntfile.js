@@ -10,7 +10,8 @@ module.exports = function(grunt) {
       port: 8800,
       hostname: 'localhost',
       base: 'app',
-      open: true
+      open: true,
+      livereload: livePort
     },
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -67,7 +68,7 @@ module.exports = function(grunt) {
     // },
     watch: {
       srcfiles: {
-        files: ['<%= jshint.files %>','app/index.html'],
+        files: ['<%= concat.dist.src %>','app/index.html'],
         tasks: ['diff']
       },
       bowerdiff: {
@@ -75,7 +76,7 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       livereload: {
-        files: ['app/index.html','templates/**/*.html','scripts/**/*.js','images/**/*.*','styles/**/*.css'],
+        files: ['app/index.html','app/templates/**/*.html','app/scripts/*.js','app/images/**/*.*','app/styles/**/*.css'],
         options: {
           livereload: livePort
         }

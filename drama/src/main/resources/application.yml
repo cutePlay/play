@@ -22,4 +22,4 @@ spring:
   cors:
     enable: true
     origin:
-      - http://localhost(:\d+)?
+      - http://localhost:8800

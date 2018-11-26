@@ -7,7 +7,11 @@
 var dramaStaticApp = angular.module('dramaStaticApp', [
   'ngRoute',
   'ngResource'
-]);
+])
+    .value("baseUrl",{
+      "api":"http://localhost:8088/"
+    })
+;
 ;'use strict';
 
 dramaStaticApp.
@@ -30,6 +34,15 @@ dramaStaticApp.
  * Controller of the dramaStaticApp
  */
 dramaStaticApp
-  .controller('IndexCtrl', function () {
+  .controller('IndexCtrl', function (DramaService) {
+    var list = DramaService.query();
+    DramaService.get({id:1},function(resp){console.info(resp)});
+    console.info(list);
     console.info("test index");
+  });
+;dramaStaticApp
+  .factory('DramaService',function(baseUrl,$resource){
+    return $resource(baseUrl.api+"api/dramas/:id",
+        {id:'@id'},
+        {query:{method:"GET",isArray:true}});
   });

@@ -8,9 +8,6 @@
  * Controller of the dramaStaticApp
  */
 dramaStaticApp
-  .controller('IndexCtrl', function (DramaService) {
-    var list = DramaService.query();
-    DramaService.get({id:1},function(resp){console.info(resp)});
-    console.info(list);
-    console.info("test index");
-  });
+  .controller('IndexCtrl',[function () {
+    console.info("test index ok");
+  }]);

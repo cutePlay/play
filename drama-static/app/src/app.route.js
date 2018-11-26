@@ -7,7 +7,10 @@ dramaStaticApp.
             .when('/',{
                 templateUrl: 'templates/index.html',
                 controller: 'IndexCtrl',
-                controllerAs: 'index'
+            })
+            .when('/dramas',{
+                templateUrl: 'templates/drama/list.html',
+                controller: 'DramaCtrl',
             })
             .otherwise({redirectTo: '/'});
 });

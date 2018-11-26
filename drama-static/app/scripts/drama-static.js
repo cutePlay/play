@@ -7,9 +7,11 @@
 var dramaStaticApp = angular.module('dramaStaticApp', [
   'ngRoute',
   'ngResource'
-])
-    .constant("baseUrl",{
-      "api":"http://localhost:8088/"
+]);
+
+dramaStaticApp.constant("baseUrl",{
+      "api":"http://localhost:8088/",
+      "img":"http://localhost:8088/"
     })
 ;
 ;'use strict';
@@ -21,7 +23,10 @@ dramaStaticApp.
             .when('/',{
                 templateUrl: 'templates/index.html',
                 controller: 'IndexCtrl',
-                controllerAs: 'index'
+            })
+            .when('/dramas',{
+                templateUrl: 'templates/drama/list.html',
+                controller: 'DramaCtrl',
             })
             .otherwise({redirectTo: '/'});
 });;'use strict';
@@ -34,15 +39,28 @@ dramaStaticApp.
  * Controller of the dramaStaticApp
  */
 dramaStaticApp
-  .controller('IndexCtrl', function (DramaService) {
-    var list = DramaService.query();
-    DramaService.get({id:1},function(resp){console.info(resp)});
-    console.info(list);
-    console.info("test index");
-  });
+  .controller('DramaCtrl',['baseUrl','DramaService','$scope', function (baseUrl,DramaService,$scope) {
+    console.info("drama");
+    // $scope.dramas = [{"id":"abc","title":"t"}];
+    $scope.dramas = DramaService.query();
+    $scope.baseUrl = baseUrl;
+    console.info($scope.dramas);
+  }]);
+;'use strict';
+
+/**
+ * @ngdoc function
+ * @name dramaStaticApp.controller:AboutCtrl
+ * @description
+ * # AboutCtrl
+ * Controller of the dramaStaticApp
+ */
+dramaStaticApp
+  .controller('IndexCtrl',[function () {
+    console.info("test index ok");
+  }]);
 ;dramaStaticApp
-  .factory('DramaService',function(baseUrl,$resource){
+  .service('DramaService',['baseUrl','$resource',function(baseUrl,$resource){
     return $resource(baseUrl.api+"api/dramas/:id",
-        {id:'@id'},
-        {query:{method:"GET",isArray:true}});
-  });
+        {id:'@id'});
+  }]);

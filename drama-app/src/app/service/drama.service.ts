@@ -27,9 +27,9 @@ export class DramaService {
   }
   getDrama(id: number): Observable<Drama> {
     const url = `${this.url}/${id}`;
-    return this.http.get(url)
+    return this.http.get<Drama>(url)
       .pipe(
-        catchError(this.handleError<Drama>('getDramas', {}))
+        catchError(this.handleError<Drama>('getDramas', new Drama()))
       );
   }
   /**

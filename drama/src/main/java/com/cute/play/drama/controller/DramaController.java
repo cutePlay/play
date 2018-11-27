@@ -1,10 +1,14 @@
 package com.cute.play.drama.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cute.play.drama.entity.Drama;
 import com.cute.play.drama.entity.DramaRole;
 import com.cute.play.drama.repository.DramaRepository;
 import com.cute.play.drama.repository.DramaRoleRepository;
+import com.cute.play.drama.vo.PageRequest;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/dramas")
+@Slf4j
 public class DramaController {
     @Autowired
     private DramaRepository dramaRepository;
@@ -24,8 +29,9 @@ public class DramaController {
     private DramaRoleRepository dramaRoleRepository;
 
     @GetMapping
-    public List<Drama> list() {
-        return dramaRepository.list(null);
+    public IPage<Drama> list(PageRequest request) {
+        Page<Drama> page = new Page<>(request.getCurrent(),request.getSize());
+        return dramaRepository.page(page,null);
     }
 
     @GetMapping("{id}")

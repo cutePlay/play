@@ -7,7 +7,7 @@ var dramaStaticApp = angular.module('dramaStaticApp', [
 ]);
 
 dramaStaticApp.constant("baseUrl",{
-      "api":"http://localhost:8088/",
-      "img":"http://localhost:8088/"
+      "api":"http://localhost:8088",
+      "img":"http://localhost:8088"
     })
 ;

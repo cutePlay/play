@@ -6,11 +6,12 @@ dramaStaticApp.
         $routeProvider
             .when('/',{
                 templateUrl: 'templates/index.html',
-                controller: 'IndexCtrl',
             })
             .when('/dramas',{
-                templateUrl: 'templates/drama/list.html',
-                controller: 'DramaCtrl',
+                templateUrl: 'templates/drama/list.html'
+            })
+            .when('/dramas/:id',{
+                templateUrl: 'templates/drama/item.html'
             })
             .otherwise({redirectTo: '/'});
 });

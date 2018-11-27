@@ -23,7 +23,6 @@ module.exports = function(grunt) {
       options: {
         banner: '<%= banner %>',
         stripBanners: true,
-        separator: ';',
       },
       dist: {
         src: ['app/src/**/*.js'],

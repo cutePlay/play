@@ -1,4 +1,4 @@
-/*! drama-static - v1.0.0 - 2018-11-26
+/*! drama-static - v1.0.0 - 2018-11-27
 * https://github.com/cutePlay/drama-static#readme
 * Copyright (c) 2018 ; Licensed  */
 'use strict';
@@ -10,11 +10,12 @@ var dramaStaticApp = angular.module('dramaStaticApp', [
 ]);
 
 dramaStaticApp.constant("baseUrl",{
-      "api":"http://localhost:8088/",
-      "img":"http://localhost:8088/"
+      "api":"http://localhost:8088",
+      "img":"http://localhost:8088"
     })
 ;
-;'use strict';
+
+'use strict';
 
 dramaStaticApp.
     config(function($locationProvider, $routeProvider) {
@@ -22,14 +23,16 @@ dramaStaticApp.
         $routeProvider
             .when('/',{
                 templateUrl: 'templates/index.html',
-                controller: 'IndexCtrl',
             })
             .when('/dramas',{
-                templateUrl: 'templates/drama/list.html',
-                controller: 'DramaCtrl',
+                templateUrl: 'templates/drama/list.html'
+            })
+            .when('/dramas/:id',{
+                templateUrl: 'templates/drama/item.html'
             })
             .otherwise({redirectTo: '/'});
-});;'use strict';
+});
+'use strict';
 
 /**
  * @ngdoc function
@@ -39,14 +42,34 @@ dramaStaticApp.
  * Controller of the dramaStaticApp
  */
 dramaStaticApp
-  .controller('DramaCtrl',['baseUrl','DramaService','$scope', function (baseUrl,DramaService,$scope) {
-    console.info("drama");
-    // $scope.dramas = [{"id":"abc","title":"t"}];
-    $scope.dramas = DramaService.query();
-    $scope.baseUrl = baseUrl;
-    console.info($scope.dramas);
+.controller('DramaItemCtrl',['DramaService','$scope','$routeParams', function (DramaService,$scope,$routeParams) {
+  // $scope.dramas = [{"id":"abc","title":"t"}];
+  console.info($routeParams);
+  $scope.drama = DramaService.get($routeParams);
+  console.info($scope.drama);
+
+}]);
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name dramaStaticApp.controller:AboutCtrl
+ * @description
+ * # AboutCtrl
+ * Controller of the dramaStaticApp
+ */
+dramaStaticApp
+  .controller('DramaListCtrl',['DramaService','$scope','$routeParams', function (DramaService,$scope,$routeParams) {
+    console.info($routeParams);
+    DramaService.get($routeParams,function(resp){
+      /** @namespace resp.records */
+      $scope.dramas = resp.records;
+      console.info($scope.dramas);
+    });
   }]);
-;'use strict';
+
+'use strict';
 
 /**
  * @ngdoc function
@@ -59,8 +82,34 @@ dramaStaticApp
   .controller('IndexCtrl',[function () {
     console.info("test index ok");
   }]);
-;dramaStaticApp
+
+dramaStaticApp
+  .directive('embedSrc',function(){
+    return {
+      restrict: 'A',
+      link: function (scope, element, attrs) {
+        var current = element;
+        scope.$watch(function() { return attrs.embedSrc; }, function () {
+          var clone = element
+          .clone()
+          .attr('src', attrs.embedSrc);
+          current.replaceWith(clone);
+          current = clone;
+        });
+      }
+    };
+  });
+dramaStaticApp
+  .filter('baseImg',function (baseUrl) {
+    return function(text){
+      if(!text.startsWith("/")){
+        return baseUrl.img+"/"+text;
+      }
+      return baseUrl.img + text;
+    }
+  });
+dramaStaticApp
   .service('DramaService',['baseUrl','$resource',function(baseUrl,$resource){
-    return $resource(baseUrl.api+"api/dramas/:id",
+    return $resource(baseUrl.api+"/api/dramas/:id",
         {id:'@id'});
   }]);

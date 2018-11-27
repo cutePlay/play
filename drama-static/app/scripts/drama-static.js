@@ -43,10 +43,15 @@ dramaStaticApp.
  */
 dramaStaticApp
 .controller('DramaItemCtrl',['DramaService','$scope','$routeParams', function (DramaService,$scope,$routeParams) {
-  // $scope.dramas = [{"id":"abc","title":"t"}];
-  console.info($routeParams);
-  $scope.drama = DramaService.get($routeParams);
-  console.info($scope.drama);
+  DramaService.get($routeParams,function(resp){
+    $scope.drama = resp;
+  });
+  DramaService.get({url:"roles",id:$routeParams.id},{},function(resp){
+    console.info(resp);
+  });
+  $scope.showBrief = function(){
+    console.info("brief");
+  }
 
 }]);
 
@@ -102,7 +107,7 @@ dramaStaticApp
 dramaStaticApp
   .filter('baseImg',function (baseUrl) {
     return function(text){
-      if(!text.startsWith("/")){
+      if(text&&!text.startsWith("/")){
         return baseUrl.img+"/"+text;
       }
       return baseUrl.img + text;
@@ -110,6 +115,6 @@ dramaStaticApp
   });
 dramaStaticApp
   .service('DramaService',['baseUrl','$resource',function(baseUrl,$resource){
-    return $resource(baseUrl.api+"/api/dramas/:id",
-        {id:'@id'});
+    return $resource(baseUrl.api+"/api/dramas/:id/:url",
+        {id:'@id',url:'@url'});
   }]);

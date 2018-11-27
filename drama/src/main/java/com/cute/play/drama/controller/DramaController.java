@@ -7,7 +7,6 @@ import com.cute.play.drama.entity.DramaRole;
 import com.cute.play.drama.repository.DramaRepository;
 import com.cute.play.drama.repository.DramaRoleRepository;
 import com.cute.play.drama.vo.PageRequest;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +39,12 @@ public class DramaController {
     }
 
     @GetMapping("{id}/roles")
-    public List<DramaRole> roles(@PathVariable Long id){
+    public IPage<DramaRole> roles(@PathVariable Long id){
         return dramaRoleRepository.getDramaRoleList(id);
     }
 
-    @GetMapping("{dramaId}/roles/{id}")
-    public DramaRole role(@PathVariable Long dramaId, @PathVariable Long id){
-        return dramaRoleRepository.getById(id);
+    @GetMapping("{id}/roles/{roleId}")
+    public DramaRole role(@PathVariable Long id, @PathVariable Long roleId){
+        return dramaRoleRepository.getById(roleId);
     }
 }

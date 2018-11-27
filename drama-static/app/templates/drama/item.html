@@ -1,1 +1,6 @@
-<div ng-controller="DramaItemCtrl"></div>
+<div ng-controller="DramaItemCtrl">
+  <img ng-src="{{drama.cover | baseImg}}" alt="drama.title" height="300">
+  <p>{{drama.title}}</p>
+  <a ng-href="#!/dramas/{{drama.id}}">简介</a>
+  <a ng-href="#!/dramas/{{drama.id}}/roles">角色</a>
+</div>

@@ -9,9 +9,14 @@
  */
 dramaStaticApp
 .controller('DramaItemCtrl',['DramaService','$scope','$routeParams', function (DramaService,$scope,$routeParams) {
-  // $scope.dramas = [{"id":"abc","title":"t"}];
-  console.info($routeParams);
-  $scope.drama = DramaService.get($routeParams);
-  console.info($scope.drama);
+  DramaService.get($routeParams,function(resp){
+    $scope.drama = resp;
+  });
+  DramaService.get({url:"roles",id:$routeParams.id},{},function(resp){
+    console.info(resp);
+  });
+  $scope.showBrief = function(){
+    console.info("brief");
+  }
 
 }]);

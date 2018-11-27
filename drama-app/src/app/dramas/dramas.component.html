@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let drama of dramas.records">
+    <a routerLink="/dramas/{{drama.id}}">
+      <img [src]="drama.cover | baseImg" height="100">
+      <span>{{drama.title}}</span>
+    </a>
+  </li>
+</ul>

@@ -6,12 +6,14 @@ import {AppComponent} from './app.component';
 import {DramasComponent} from './dramas/dramas.component';
 import {AppRoutingModule} from './app-routing.module';
 import {BaseImgPipe} from './pipe/base-img.pipe';
+import {DramaDetailComponent} from './drama-detail/drama-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DramasComponent,
-    BaseImgPipe
+    BaseImgPipe,
+    DramaDetailComponent
   ],
   imports: [
     BrowserModule,

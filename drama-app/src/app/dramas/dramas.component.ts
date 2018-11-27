@@ -9,7 +9,7 @@ import {Page} from '../core/page';
   styleUrls: ['./dramas.component.css']
 })
 export class DramasComponent implements OnInit {
-  dramas: Page<Drama> = new Page();
+  dramas: Page<Drama>;
   constructor(private dramaService: DramaService) {
   }
 

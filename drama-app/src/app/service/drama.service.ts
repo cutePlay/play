@@ -22,7 +22,14 @@ export class DramaService {
   getDramas(): Observable<Page<Drama>> {
     return this.http.get<Page<Drama>>(this.url)
       .pipe(
-        catchError(this.handleError('getDramas', new Page<Drama>()))
+        catchError(this.handleError<Page<Drama>>('getDramas', new Page<Drama>()))
+      );
+  }
+  getDrama(id: number): Observable<Drama> {
+    const url = `${this.url}/${id}`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.handleError<Drama>('getDramas', {}))
       );
   }
   /**

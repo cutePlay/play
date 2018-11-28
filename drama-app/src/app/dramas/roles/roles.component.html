@@ -1,6 +1,9 @@
-<ul class="roles" *ngIf="roles">
-  <li *ngFor="let role of roles.records">
-    <img [src]="role.portrait | baseImg">
-    <span>{{role.name}}</span>
-  </li>
-</ul>
+<div class="container" *ngIf="roles">
+  <div class="row" *ngFor="let role of roles.records">
+    <div class="col-4"><img class="card-img img-thumbnail" [src]="role.portrait | baseImg" [alt]="role.name"></div>
+    <div class="col-8 card">
+      <h6 class="card-title">{{role.name}}</h6>
+      <p class="card-text">{{role.synopsis}}</p>
+    </div>
+  </div>
+</div>

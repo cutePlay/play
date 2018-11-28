@@ -10,7 +10,6 @@ import {Drama} from '../../core/drama';
 })
 export class DramaDetailComponent implements OnInit {
   drama: Drama;
-  showApp: string;
   constructor(private dramaService: DramaService,
               private route: ActivatedRoute) { }
 
@@ -22,5 +21,8 @@ export class DramaDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dramaService.getDrama(id)
       .subscribe(drama => this.drama = drama);
+  }
+  start(): void {
+    console.info('开始游戏');
   }
 }

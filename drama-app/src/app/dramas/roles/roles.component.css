@@ -8,7 +8,7 @@
 .roles li {
   position: relative;
   cursor: pointer;
-  background-color: beige;
+  /*background-color: beige;*/
   margin: .5em;
   padding: .3em 0;
   height: 6em;
@@ -22,7 +22,7 @@
 
 .roles li:hover {
   color: #607D8B;
-  background-color: #DDD;
+  background-color: cornsilk;
   left: .1em;
 }
 
@@ -36,21 +36,4 @@
 
 .roles a:hover {
   color:#607D8B;
-}
-
-.roles .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
 }

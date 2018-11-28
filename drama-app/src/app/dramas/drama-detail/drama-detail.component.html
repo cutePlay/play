@@ -1,9 +1,23 @@
-<div *ngIf="drama">
-  <h2>{{drama.title}}</h2>
-  <img [src]="drama.cover | baseImg" [alt]="drama.title" height="100">
-  <nav>
-    <a routerLink="." >简介</a>
-    <a routerLink="roles" >角色列表</a>
-  </nav>
+
+<div class="container" *ngIf="drama">
+
+  <div class="row">
+    <div class="col-4"><img [src]="drama.cover | baseImg" [alt]="drama.title" class="img-thumbnail"></div>
+    <div class="col-8">
+      <h2>{{drama.title}}</h2>
+      <p></p>
+      <button class="btn btn-outline-primary" (click)="start()">创建房间</button>
+    </div>
+  </div>
+
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="." routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">简介</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="roles" routerLinkActive="active">角色列表</a>
+    </li>
+  </ul>
   <router-outlet></router-outlet>
 </div>

@@ -12,6 +12,6 @@ import lombok.Setter;
 public class DramaRole extends BaseEntity {
     private String name;
     private String portrait;
-    private String book;
+    private String synopsis;
     private Long dramaId;
 }

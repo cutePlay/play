@@ -1,32 +1,32 @@
-/* DramasComponent's private CSS styles */
-.dramas {
+/* RolesComponent's private CSS styles */
+.roles {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
-.dramas li {
+.roles li {
   position: relative;
   cursor: pointer;
-  background-color: #eeeeee;
+  background-color: beige;
   margin: .5em;
   padding: .3em 0;
-  height: 10em;
+  height: 6em;
   border-radius: 4px;
 }
 
-.dramas li img {
-  height: 8em;
-  margin-top: 1em;
+.roles li img {
+  height: 5em;
+  margin-top: 0.5em;
 }
 
-.dramas li:hover {
+.roles li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
 
-.dramas a {
+.roles a {
   color: #888;
   text-decoration: none;
   position: relative;
@@ -34,11 +34,11 @@
   width: 250px;
 }
 
-.dramas a:hover {
+.roles a:hover {
   color:#607D8B;
 }
 
-.dramas .badge {
+.roles .badge {
   display: inline-block;
   font-size: small;
   color: white;

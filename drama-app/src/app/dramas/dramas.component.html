@@ -1,8 +1,8 @@
-<ul *ngIf="dramas">
+<ul class="dramas" *ngIf="dramas">
   <li *ngFor="let drama of dramas.records">
     <a routerLink="/dramas/{{drama.id}}">
-      <img [src]="drama.cover | baseImg" height="100">
-      <span>{{drama.title}}</span>
+      <img [src]="drama.cover | baseImg">
+      <span class="badge">{{drama.title}}</span>
     </a>
   </li>
 </ul>

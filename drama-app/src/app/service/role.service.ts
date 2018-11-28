@@ -1,32 +1,32 @@
 import {Injectable} from '@angular/core';
-import {Drama} from '../core/drama';
-import {Page} from '../core/page';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-
+import {Observable, of} from 'rxjs';
+import {Page} from '../core/page';
+import {Role} from '../core/role';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DramaService {
+export class RoleService {
   private url = environment.baseApi + '/api/dramas';
   constructor(private http: HttpClient) {
   }
 
-  getDramas(): Observable<Page<Drama>> {
-    return this.http.get<Page<Drama>>(this.url)
-      .pipe(
-        catchError(this.handleError<Page<Drama>>('getDramas', new Page<Drama>()))
-      );
+  getRoles(dramaId: number): Observable<Page<Role>> {
+    const url = `${this.url}/${dramaId}/roles`;
+    return this.http.get<Page<Role>>(url)
+    .pipe(
+      catchError(this.handleError<Page<Role>>('getRoles', new Page<Role>()))
+    );
   }
-  getDrama(id: number): Observable<Drama> {
+  getRole(id: number): Observable<Role> {
     const url = `${this.url}/${id}`;
-    return this.http.get<Drama>(url)
-      .pipe(
-        catchError(this.handleError<Drama>('getDramas', new Drama()))
-      );
+    return this.http.get<Role>(url)
+    .pipe(
+      catchError(this.handleError<Role>('getDramas', new Role()))
+    );
   }
   /**
    * Handle Http operation that failed.

@@ -1,0 +1,6 @@
+<ul class="roles" *ngIf="roles">
+  <li *ngFor="let role of roles.records">
+    <img [src]="role.portrait | baseImg">
+    <span>{{role.name}}</span>
+  </li>
+</ul>

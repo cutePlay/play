@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'drama-app';
+  title = '超可爱玩~剧本杀';
 }
 

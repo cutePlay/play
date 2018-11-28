@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DramaService} from '../service/drama.service';
+import {DramaService} from '../../service/drama.service';
 import {ActivatedRoute} from '@angular/router';
-import {Drama} from '../core/drama';
+import {Drama} from '../../core/drama';
 
 @Component({
   selector: 'app-drama-detail',
@@ -10,6 +10,7 @@ import {Drama} from '../core/drama';
 })
 export class DramaDetailComponent implements OnInit {
   drama: Drama;
+  showApp: string;
   constructor(private dramaService: DramaService,
               private route: ActivatedRoute) { }
 

@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {Role} from '../core/role';
 
 
 @Injectable({
@@ -25,8 +26,21 @@ export class DramaService {
     const url = `${this.url}/${id}`;
     return this.http.get<Drama>(url)
       .pipe(
-        catchError(this.handleError<Drama>('getDramas', new Drama()))
+        catchError(this.handleError<Drama>('getDrama', new Drama()))
       );
+  }
+  getRoles(id: number): Observable<Page<Role>> {
+    const url = `${this.url}/${id}/roles`;
+    return this.http.get<Page<Role>>(url)
+    .pipe(
+      catchError(this.handleError<Page<Role>>('getRoles', new Page<Role>()))
+    );
+  }
+
+  newGame(id: number): Observable<number> {
+    const url = `${this.url}/${id}/gameRoom`;
+    return this.http.post<number>(url, {})
+      .pipe(catchError(this.handleError<number>('new game', 1)));
   }
   /**
    * Handle Http operation that failed.

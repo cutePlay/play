@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DramaService} from '../../service/drama.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Drama} from '../../core/drama';
 
 @Component({
@@ -10,19 +10,27 @@ import {Drama} from '../../core/drama';
 })
 export class DramaDetailComponent implements OnInit {
   drama: Drama;
+  id: number;
   constructor(private dramaService: DramaService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.id = +this.route.snapshot.paramMap.get('id');
     this.getDrama();
   }
 
   getDrama(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.dramaService.getDrama(id)
+    this.dramaService.getDrama(this.id)
       .subscribe(drama => this.drama = drama);
   }
   start(): void {
-    console.info('开始游戏');
+    this.dramaService.newGame(this.id)
+      .subscribe(id => {
+        console.info(id);
+        this.router.navigate(['/gameRooms', id])
+          .catch(err => console.error(err));
+      });
+    // console.info('开始游戏');
   }
 }

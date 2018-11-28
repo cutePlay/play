@@ -15,6 +15,6 @@ public class DramaInfo extends BaseEntity {
     private String source;
     private InfoLevelEnum level;
     private Long dramaId;
-    private Long sceneId;
+    private Byte sceneFlag;
     private Long roleId;
 }

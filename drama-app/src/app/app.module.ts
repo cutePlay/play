@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BaseImgPipe} from './pipe/base-img.pipe';
 import {DramaDetailComponent} from './dramas/drama-detail/drama-detail.component';
 import {RolesComponent} from './dramas/roles/roles.component';
+import {GameRoomComponent} from './game-room/game-room.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {RolesComponent} from './dramas/roles/roles.component';
     DramasComponent,
     BaseImgPipe,
     DramaDetailComponent,
-    RolesComponent
+    RolesComponent,
+    GameRoomComponent
   ],
   imports: [
     BrowserModule,

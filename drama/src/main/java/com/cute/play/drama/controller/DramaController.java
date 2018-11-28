@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,12 @@ public class DramaController {
 
     @GetMapping("{id}/roles")
     public IPage<DramaRole> roles(@PathVariable Long id){
-        return dramaRoleRepository.getDramaRoleList(id);
+        return dramaRepository.getDramaRoleList(id);
+    }
+
+    @PostMapping("{id}/gameRoom")
+    public Long gameRoom(@PathVariable Long id){
+        return dramaRepository.createRoom(id);
     }
 
     @GetMapping("{id}/roles/{roleId}")

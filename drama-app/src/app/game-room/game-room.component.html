@@ -1,0 +1,8 @@
+<div *ngIf="dramaScenes">
+  <ul>
+    <li *ngFor="let scene of dramaScenes.records">
+      {{scene.sort}}
+      <p>{{scene.name}}</p>
+    </li>
+  </ul>
+</div>

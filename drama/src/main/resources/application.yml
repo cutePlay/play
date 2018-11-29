@@ -23,3 +23,7 @@ spring:
     enable: true
     origin:
       - http://localhost(:\d+)
+wechat:
+  appId: wx93a610c9f8cc4282
+  appSecret: 4493415855caf1b70e2c45c4de784110
+  token: qianfan1314cute

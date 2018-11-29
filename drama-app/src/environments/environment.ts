@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseImg: 'http://localhost:8088',
+  baseImg: 'http://images.janehyt.cn/drama',
   baseApi: 'http://localhost:8088'
 };
 

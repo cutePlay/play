@@ -1,9 +1,0 @@
-<ul ng-controller="DramaListCtrl">
-  <li ng-repeat="drama in dramas">
-    <a ng-href="#!/dramas/{{drama.id}}">
-      <img ng-src="{{drama.cover | baseImg }}" alt="{{drama.title}}" height="100" />
-    </a>
-    <a ng-href="#!/dramas/{{drama.id}}">{{drama.title}}</a>
-    <p>{{drama.synopsis}}</p>
-  </li>
-</ul>

@@ -21,8 +21,8 @@ import org.springframework.web.filter.CorsFilter;
 @Getter
 @Setter
 @Configuration
-@ConditionalOnProperty("spring.cors.enable")
-@ConfigurationProperties("spring.cors")
+@ConfigurationProperties("cors")
+@ConditionalOnProperty("cors.enable")
 public class CorsConfig {
     private Boolean enable;
     private List<String> origin;

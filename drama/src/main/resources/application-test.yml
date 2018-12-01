@@ -1,0 +1,23 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/drama?useSSL=false
+    username: root
+    password: paly941010Ivan
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifetime: 1765000
+      maximumPoolSize: 15
+  cors:
+    enable: true
+    origin:
+      - '*'
+wechat:
+  appId: wx93a610c9f8cc4282
+  appSecret: 4493415855caf1b70e2c45c4de784110
+  token: qianfan1314cute
+logging:
+  level:
+    root: INFO
+  file: logs/test/play.log

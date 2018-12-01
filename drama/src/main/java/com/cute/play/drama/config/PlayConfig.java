@@ -7,15 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author hanyuting
- * @since 2018/11/29
+ * @since 2018/11/30
  */
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "wechat")
-public class WeChatConfig {
-    private String appId;
-    private String appSecret;
-    private String token;
-
+@ConfigurationProperties(prefix = "play")
+public class PlayConfig {
+    private String frontUrl;
 }

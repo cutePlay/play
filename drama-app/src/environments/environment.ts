@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseImg: 'http://images.janehyt.cn/drama',
-  baseApi: 'http://localhost:8088'
+  baseApi: 'http://localhost:8088',
+  baseRedirect: 'http://localhost:8088/api/wx/authorize/redirect'
 };
 
 /*

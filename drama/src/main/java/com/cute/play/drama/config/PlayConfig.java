@@ -15,4 +15,5 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "play")
 public class PlayConfig {
     private String frontUrl;
+    private String callbackUrl;
 }

@@ -18,4 +18,4 @@ wechat:
   appSecret: 4493415855caf1b70e2c45c4de784110
   token: qianfan1314cute
 play:
-  front-url: 'http://localhost:8800?openid=%s'
+  front-url: http://localhost:8800?openid=%s

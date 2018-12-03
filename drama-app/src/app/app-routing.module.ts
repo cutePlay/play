@@ -4,14 +4,16 @@ import {DramasComponent} from './dramas/dramas.component';
 import {DramaDetailComponent} from './dramas/drama-detail/drama-detail.component';
 import {RolesComponent} from './dramas/roles/roles.component';
 import {GameRoomComponent} from './game-room/game-room.component';
+import {RouteInterceptor} from './interceptor/route.interceptor';
 
 const routes: Routes = [
   {
     path: 'dramas',
+    canActivate: [RouteInterceptor],
     children: [
       {
         path: '',
-        component: DramasComponent,
+        component: DramasComponent
       },
       {
         path: ':id',
@@ -27,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'gameRooms/:id',
-    component: GameRoomComponent
+    component: GameRoomComponent,
+    canActivate: [RouteInterceptor]
   }
   // { path: 'dramas/:id', component: DramaDetailComponent },
   // { path: 'dramas/:id/roles', component: RolesComponent }

@@ -7,6 +7,7 @@ import com.github.vioao.wechat.api.SnsApi;
 import com.github.vioao.wechat.api.UserApi;
 import com.github.vioao.wechat.bean.response.sns.SnsTokenResponse;
 import com.github.vioao.wechat.bean.response.user.UserResponse;
+import com.github.vioao.wechat.utils.StringUtils;
 import com.github.vioao.wechat.utils.signature.SignatureUtil;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
@@ -46,11 +47,15 @@ public class WeChatController {
         String openId = sns.getOpenid();
         UserResponse user = UserApi.getUserInfo(WechatTokenUtil.getToken(weChatConfig.getAppId(),weChatConfig.getAppSecret()),openId);
         log.info("UserInfo:{}",user);
-        response.sendRedirect(playConfig.getFrontUrl());
+        response.sendRedirect(String.format(playConfig.getFrontUrl(),user.getOpenid()));
     }
 
     @GetMapping("redirect")
     public void callback(HttpServletResponse response) throws IOException {
-        response.sendRedirect(String.format(playConfig.getFrontUrl(),"123"));
+        if(StringUtils.isNotBlank(playConfig.getCallbackUrl())) {
+            response.sendRedirect(SnsApi.getOath2Url(weChatConfig.getAppId(), playConfig.getCallbackUrl(), true, "200"));
+        }else {
+            response.sendRedirect(String.format(playConfig.getFrontUrl(), "123"));
+        }
     }
 }

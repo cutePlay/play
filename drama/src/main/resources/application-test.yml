@@ -21,3 +21,6 @@ logging:
   level:
     root: INFO
   file: logs/test/play.log
+play:
+  front-url: http://play.janehyt.cn?openid=%s
+  callback-url: http://apiplay.janehyt.cn/api/wx/authorize/redirect

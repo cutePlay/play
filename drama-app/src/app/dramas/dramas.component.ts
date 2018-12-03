@@ -17,7 +17,7 @@ export class DramasComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe((param: Params) =>
-      console.info(param)
+      console.info('drama ', param)
     );
     this.getDramas();
   }

@@ -8,6 +8,3 @@ spring:
       uri: ${vcap.services.configuration-service.credentials.uri:http://localhost:8888}
   main:
     allow-bean-definition-overriding: true
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

@@ -8,6 +8,11 @@ import {RouteInterceptor} from './interceptor/route.interceptor';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dramas'
+  },
+  {
     path: 'dramas',
     canActivate: [RouteInterceptor],
     children: [

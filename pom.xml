@@ -12,6 +12,10 @@
     <module>drama</module>
     <module>config-server</module>
     <module>eureka-server</module>
+    <module>account</module>
+    <module>order</module>
+    <module>inventory</module>
+    <module>mahjong</module>
   </modules>
 
   <name>play</name>
